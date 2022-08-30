@@ -1,0 +1,5 @@
+/api/node_modules
+/api/td-restapi.db
+
+/client/node_modules
+/*/*.DS_Store
