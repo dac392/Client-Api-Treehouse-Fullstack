@@ -52,8 +52,11 @@ export default class Data {
 
     async getAllUsers(){
         const response = await this.api('/users-all', 'GET');
+
         if (response.status === 200){
-            return response.json().then(data => data);
+            const x = await response.json().then(data => data);
+            console.log(x);
+            return x;
         } else if( response.status === 401 ){
             console.log(response.json());
             return null;

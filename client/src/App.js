@@ -4,7 +4,8 @@ import { Context } from './Context';
 
 const App = () => {
  const { actions } = useContext(Context);
- const users = actions.getAllUsers();
+ const users = actions.getAllUsers().then(res=>res);
+ console.log(users);
   
   return (
     <div>

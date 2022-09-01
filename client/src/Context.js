@@ -8,7 +8,8 @@ export const Provider = (props)=>{
 
     const getAllUsers = async ()=> {
         const users = await data.getAllUsers();
-        return users
+        console.log(users);
+        return users;
     }
 
     return (
