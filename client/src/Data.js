@@ -1,13 +1,5 @@
 import config from "./config";
 
-
-const options = {
-    method,
-    headers: {
-        'Content-Type': 'application/json; charset=utf8'
-    }
-};
-
 export default class Data {
 
     /**
@@ -21,6 +13,12 @@ export default class Data {
      */
     api(path, method='GET', body=null, requiresAuth=false, credentials=null){
         const url = config.apiURL + path;
+        const options = {
+            method,
+            headers: {
+                'Content-Type': 'application/json; charset=utf8'
+            }
+        };
         if( body !== null){
             options.body = JSON.stringify(body);
         }
@@ -50,6 +48,18 @@ export default class Data {
      */
     async createUser(user){
 
+    }
+
+    async getAllUsers(){
+        const response = await this.api('/users-all', 'GET');
+        if (response.status === 200){
+            return response.json().then(data => data);
+        } else if( response.status === 401 ){
+            console.log(response.json());
+            return null;
+        } else{
+            throw new Error();
+        }
     }
 
 
