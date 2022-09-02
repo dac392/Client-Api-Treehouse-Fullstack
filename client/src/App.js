@@ -1,20 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
+import AllUsers from './components/AllUsers';
 import { Context } from './Context';
 
 const App = () => {
- const { actions } = useContext(Context);
- const users = actions.getAllUsers().then(res=>res);
- console.log(users);
+
+  const { isLoading , actions } = useContext(Context);
   
+  useEffect( ()=>{
+    actions.getAllUsers()
+      .then(response => actions.setAllUsers(response))
+      .catch(error => console.log(error.messgage))
+      .finally( ()=>actions.setIsLoading(false))
+  }, []);
+
   return (
     <div>
       <h1>List of all Users</h1>
-      <ul>
-        {
-          users.map(user=> (<li />))
-        }
-      </ul>
+      {
+        isLoading
+        ? <p>Loading...</p>
+        : <AllUsers />
+      }
     </div>
   );
 }

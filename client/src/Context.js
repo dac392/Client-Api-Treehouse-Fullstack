@@ -5,18 +5,23 @@ export const Context = React.createContext();
 
 export const Provider = (props)=>{
     const data = new Data();
+    const [allUsers, setAllUsers] = useState([]);
+    const [isLoading, setIsLoading] = useState([]);
 
     const getAllUsers = async ()=> {
-        const users = await data.getAllUsers();
-        console.log(users);
-        return users;
+        const something = await data.getAllUsers();
+        return something;
     }
 
     return (
         <Context.Provider value={
             {
+                allUsers,
+                isLoading,
                 actions: {
-                    getAllUsers
+                    getAllUsers,
+                    setAllUsers,
+                    setIsLoading
                 }
             }
         }>
