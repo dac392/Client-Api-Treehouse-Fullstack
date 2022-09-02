@@ -6,18 +6,11 @@ html {
     font-size: 1.25em;
 }
 body {
-    font-family: 'Work Sans', sans-serif;
-}
-h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 p {
     font-weight: 300;
     margin-bottom: 1.5rem;
-    line-height: 1.5;
-    hyphens: auto;
 }
 a {
     color: #939;
@@ -26,13 +19,14 @@ a {
 .wrap {
     max-width: 1250px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0rem 2rem;
 }
 header {
     background: #57496e;
     color: #fff;
     padding: 1rem 0;
     margin-bottom: 2rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 .header--flex {
     display: flex;
@@ -55,7 +49,7 @@ header nav a:hover {
 
 .header--signedin li {
     text-align: right;
-    line-height: 1.25;
+
 }
 .header--signedout li {
     display: inline-block;
@@ -98,7 +92,6 @@ header nav a:hover {
     font-size: .9rem;
     color: #555;
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 .course--name {
     font-size: 2rem;
@@ -109,7 +102,6 @@ header nav a:hover {
 .course--detail--list {
     font-weight: 300;
     margin: 0 0 1.5rem 1rem;
-    line-height: 1.5;
 }
 .actions--bar {
     background: #e9e5f0;
@@ -130,7 +122,6 @@ header nav a:hover {
 .validation--errors ul {
     font-weight: 300;
     margin-left: 1rem;
-    line-height: 1.25;
 }
 .validation--errors li {
     margin-bottom: .5rem;
@@ -208,7 +199,6 @@ input:focus, button:focus, .button:focus, textarea:focus {
     .header--signedin li {
         display: inline-block;
         margin-left: .5rem;
-        line-height: 1;
     }
     .main--grid {
         display: grid;

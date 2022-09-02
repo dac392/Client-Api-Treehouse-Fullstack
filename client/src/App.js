@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import './App.css';
+
 import AllUsers from './components/AllUsers';
+import Header from './components/Header';
 import { Context } from './Context';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       <h1>List of all Users</h1>
       {
         isLoading
