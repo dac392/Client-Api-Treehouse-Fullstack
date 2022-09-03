@@ -51,7 +51,7 @@ header{
 }
 
 .login h1 {
-    color: white;
+    color: #ffe4f3;
 }
 
 input {
@@ -59,15 +59,16 @@ input {
     display: block;
     margin-top: 2em;
     border: none;
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid #ffe4f3;
     background-color: inherit;
-    color: white;
+    color: #ffe4f3;
     font-size: 1em;
+    font-family: 'Courier New', Courier, monospace;
 
 }
 
 input::placeholder{
-    color:white;
+    color:#ffe4f3;
 }
 
 .button {
@@ -78,6 +79,8 @@ input::placeholder{
     background-color: #ffe4f3;
     border: none;
     border-radius: 0.5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
     transition: all 0.4s ease-in-out;
 
 }

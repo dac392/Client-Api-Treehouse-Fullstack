@@ -39,7 +39,18 @@ export default class Data {
      * @param {String} password - password
      */
     async getUser(username, password){
+        const response = await this.api('/users', 'GET', true, {username, password});
+        if (response.status === 200){
+            const something = await response.json();
+            console.log(something);
+            return something;
 
+        } else if( response.status === 401 ){
+            console.log(response.json());
+            return null;
+        } else{
+            throw new Error();
+        }
     }
 
     /**

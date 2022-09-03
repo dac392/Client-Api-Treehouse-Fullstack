@@ -41,6 +41,7 @@ const LogIn = ()=>{
     const submit = ()=>{
         actions.logIn(username, password)
             .then( user=>{
+                console.log(user);
                 if( user===null ){
                     setErros(['Sign-in was unsuccessful']);
                 } else{

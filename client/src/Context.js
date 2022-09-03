@@ -13,6 +13,10 @@ export const Provider = (props)=>{
         return something;
     }
 
+    const logIn = async (username, password)=>{
+        data.getUser(username, password);
+    }
+
     return (
         <Context.Provider value={
             {
@@ -21,7 +25,8 @@ export const Provider = (props)=>{
                 actions: {
                     getAllUsers,
                     setAllUsers,
-                    setIsLoading
+                    setIsLoading,
+                    logIn
                 }
             }
         }>
