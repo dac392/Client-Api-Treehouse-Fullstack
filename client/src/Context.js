@@ -25,7 +25,6 @@ export const Provider = (props)=>{
 
     const getCourses = async ()=>{
         const courses = await data.getCourses();
-        console.log(courses);
         return courses;
     }
     return (

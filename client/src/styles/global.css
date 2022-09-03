@@ -91,10 +91,38 @@ input::placeholder{
     color: #E2B6CF;
 }
 
-/* .button:last-of-type{
-    background-color: #788585;
-    color: white;
-} */
+.courses-page{
+    margin: 2rem;
+}
+
+.course-container{
+    display: flex;
+    justify-content: space-between;
+    align-content: space-evenly;
+    gap: 1rem 2rem;
+    text-align: center;
+    flex-flow: row wrap;
+    /* background-color: aqua; */
+}
+
+
+
+.course{
+    background-color: #f574bd8a;
+    padding: 1rem;
+    flex: 1 1 0;
+    /* min-width: 35%;
+    max-width: 30%; */
+    border-radius: 0.5rem;
+}
+
+.course:last-of-type{
+    background-color: rgb(192, 192, 192, 0.6);
+}
+.course:last-of-type a{
+    color: #38302e;
+    font-weight: bold;
+}
 
 
 
