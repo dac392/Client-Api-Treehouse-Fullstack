@@ -32,10 +32,12 @@ export const Provider = (props)=>{
             {
                 allUsers,
                 isLoading,
+                authUser,
                 actions: {
                     getAllUsers,
                     setAllUsers,
                     setIsLoading,
+                    setAllUsers,
                     logIn,
                     getCourses
                 }
