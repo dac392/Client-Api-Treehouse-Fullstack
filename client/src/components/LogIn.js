@@ -25,7 +25,8 @@ const LogIn = ()=>{
             if(location.state && location.state.form){
                 navigate(location.state.form);
             }else{
-                navigate('/authenticated');
+                // navigate('/authenticated');
+                navigate('/');
             }
         } else if (flag === REDIRECT){
             navigate('/');
@@ -39,6 +40,8 @@ const LogIn = ()=>{
     }
 
     const submit = ()=>{
+        console.log(`username @ time of submit: ${username}`);
+        console.log(`password @ time of submit: ${password}`);
         actions.logIn(username, password)
             .then( user=>{
                 console.log(user);

@@ -1,4 +1,5 @@
 import config from "./config";
+import { Buffer } from "buffer";
 
 export default class Data {
 
@@ -24,10 +25,10 @@ export default class Data {
         }
 
         // Check if auth is required
-        if(requiresAuth){
-            // check this, I'm not too sure about this
+        if (requiresAuth) {
             const encodedCredentials = btoa(`${credentials.username}:${credentials.password}`);
-            options.headers['Authorizations'] = `Basic ${encodedCredentials}`;
+            options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+    
         }
 
         return fetch(url, options);
@@ -39,10 +40,9 @@ export default class Data {
      * @param {String} password - password
      */
     async getUser(username, password){
-        const response = await this.api('/users', 'GET', true, {username, password});
+        const response = await this.api('/users', 'GET', null, true, {username, password});
         if (response.status === 200){
-            const something = await response.json();
-            console.log(something);
+            const something = await response.json().then(data=>data);
             return something;
 
         } else if( response.status === 401 ){
@@ -59,6 +59,20 @@ export default class Data {
      */
     async createUser(user){
 
+    }
+
+    async getCourses(){
+        const response = await this.api('/courses', 'GET');
+        if (response.status === 200){
+            const something = await response.json().then(data=>data);
+            return something;
+
+        } else if( response.status === 401 ){
+            console.log(response.json());
+            return null;
+        } else{
+            throw new Error();
+        }
     }
 
     async getAllUsers(){

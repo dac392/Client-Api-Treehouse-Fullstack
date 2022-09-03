@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import AllUsers from './components/AllUsers';
 import Header from './components/Header';
+import Courses from './components/Courses';
 import LogIn from './components/LogIn';
 import { Context } from './Context';
 
@@ -21,7 +22,7 @@ const App = () => {
       <Header />
 
       <Routes>
-        <Route exact path="/" element={ <p>Welcome</p>}/>
+        <Route exact path="/" element={ <Courses /> }/>
         <Route path="/login" element={ <LogIn /> } />
       </Routes>
 

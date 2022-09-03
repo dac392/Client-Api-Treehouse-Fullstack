@@ -8,15 +8,26 @@ export const Provider = (props)=>{
     const [allUsers, setAllUsers] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
 
+    const [authUser, setAuthUser] = useState(null);
+
     const getAllUsers = async ()=> {
         const something = await data.getAllUsers();
         return something;
     }
 
     const logIn = async (username, password)=>{
-        data.getUser(username, password);
+        const user = await data.getUser(username, password);
+        if(user !== null){
+            setAuthUser(user);
+        }
+        return user;
     }
 
+    const getCourses = async ()=>{
+        const courses = await data.getCourses();
+        console.log(courses);
+        return courses;
+    }
     return (
         <Context.Provider value={
             {
@@ -26,7 +37,8 @@ export const Provider = (props)=>{
                     getAllUsers,
                     setAllUsers,
                     setIsLoading,
-                    logIn
+                    logIn,
+                    getCourses
                 }
             }
         }>
