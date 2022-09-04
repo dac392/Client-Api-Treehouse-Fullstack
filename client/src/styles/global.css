@@ -86,7 +86,7 @@ header{
 }
 
 .button:hover{
-    background-color: #38302e;
+    background-color: inherit;
     border: 3px solid #E2B6CF;
     color: #E2B6CF;
 }
@@ -102,7 +102,6 @@ header{
     gap: 1rem 2rem;
     text-align: center;
     flex-flow: row wrap;
-    /* background-color: aqua; */
 }
 
 
@@ -111,8 +110,6 @@ header{
     background-color: #f574bd8a;
     padding: 1rem;
     flex: 1 1 0;
-    /* min-width: 35%;
-    max-width: 30%; */
     border-radius: 0.5rem;
 }
 
@@ -125,47 +122,59 @@ header{
 }
 
 .page-container{
-    padding: 1rem;
+    padding: 2rem;
+    height: 115vh;
 }
 
 form{
     display: flex;
     gap: 1rem;
-    height: 80vh;
+    height: 70%;
 }
 
 fieldset{
     padding: 1rem;
-    flex: 1;
-
     display: flex;
+    flex: 2;
     flex-direction: column;
-    /* justify-content: space-between; */
     border: none;
 }
 
+fieldset:last-of-type{
+    flex: 1;
+}
+
+.small{
+    width: 45%;
+    display: inline;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    margin-top: -3rem;
+}
+
 label{
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 textarea{
+    min-height: 300px;
+}
+
+.course-input, textarea{
     display: block;
     width: 100%;
-    flex: 2;
-    margin-top: 1rem;
-    border-radius: 0.5ream;
-    padding: 1rem;
-    height: 10rem;
+    color: #332a40;
+    border-radius: .5rem;
+    border: 1px solid #8c789b;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 1.25rem;
 }
 
-.course-input{
-    width: 100%;
-    margin-top: 1rem;
-    flex: 1;
-    border-radius: 0.5ream;
-    font-size: 1.25rem;
-    padding: 0.5rem;
-}
 
 
 

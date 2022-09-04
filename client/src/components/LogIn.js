@@ -40,8 +40,6 @@ const LogIn = ()=>{
     }
 
     const submit = ()=>{
-        console.log(`username @ time of submit: ${username}`);
-        console.log(`password @ time of submit: ${password}`);
         actions.logIn(username, password)
             .then( user=>{
                 console.log(user);

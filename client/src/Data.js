@@ -17,7 +17,7 @@ export default class Data {
         const options = {
             method,
             headers: {
-                'Content-Type': 'application/json; charset=utf8'
+                'Content-Type': 'application/json; charset=UTF-8'
             }
         };
         if( body !== null){
@@ -72,6 +72,20 @@ export default class Data {
             return null;
         } else{
             throw new Error();
+        }
+    }
+
+    async createCourse(obj, user){
+        const response = await this.api('/courses', 'POST', obj, true, {username: user.emailAddress, password: user.password});
+        if(response.status === 201){
+            return 201;
+        } else if( response.status >= 400 ){
+            response.json().then(data => {
+                console.log(data);
+            });
+            return null;
+        } else{
+            throw new Error("something happened");
         }
     }
 
