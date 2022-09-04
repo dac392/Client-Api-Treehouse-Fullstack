@@ -16,7 +16,7 @@ const App = () => {
       <Header />
 
       <Routes>
-        <Route exact path="/" element={ <Courses /> }/>
+        <Route exact path="/" element={ <Courses isUpdate={false} details={null} /> }/>
         <Route path="/courses/" element={ <PrivateRoute /> }>
           <Route path="create" element={ <CreateCourses /> } />
           <Route path=":id/update" element={ <UpdateCourse /> }/>

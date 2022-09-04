@@ -1,5 +1,4 @@
 import config from "./config";
-import { Buffer } from "buffer";
 
 export default class Data {
 
@@ -99,6 +98,15 @@ export default class Data {
             return null;
         } else{
             throw new Error("something happened");
+        }
+    }
+
+    async updateCourse(id, course, user){
+        const response = await this.api(`/courses/${id}`, 'PUT', course, true, user);
+        if(response.status === 204){
+            return [];
+        }else{
+            return null;
         }
     }
 

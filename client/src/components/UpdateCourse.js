@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Context } from "../Context";
+import CreateCourses from "./CreateCourses";
 
 const UpdateCourse = ()=>{
+    const { id } = useParams();
+    const { actions } = useContext(Context);
+    const [ course, setCourse ] = useState(null);
+    const [ loading, setLoading ] = useState(true);
+
+    useEffect(()=>{
+        actions.getCourse(id)
+            .then(res=>setCourse(res))
+            .catch(err=>console.log(err.message))
+            .finally(setLoading(false));
+        
+    },[]);
     return (
-        <h1>Update Screen</h1>
+        loading
+        ? <p>Loading...</p>
+        : <CreateCourses isUpdate={true} details={course} id={id} />
     );
 }
 

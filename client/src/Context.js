@@ -39,7 +39,8 @@ export const Provider = (props)=>{
     }
 
     const getCourse = async(id)=>{
-        return await data.getCourseById(id);
+        const something = await data.getCourseById(id).then(data=>data);
+        return something
     }
 
     const createCourse = async (title, user, password, description, estimatedTime, materialsNeeded)=>{
@@ -54,6 +55,11 @@ export const Provider = (props)=>{
         return response;
     }
 
+    const updateCourse = async (id, course, user)=>{
+        const response = await data.updateCourse(id, course, user);
+        return response;
+    }
+
     return (
         <Context.Provider value={
             {
@@ -65,11 +71,11 @@ export const Provider = (props)=>{
                     getAllUsers,
                     setAllUsers,
                     setIsLoading,
-                    setAllUsers,
                     logIn,
                     getCourses,
                     getCourse,
-                    createCourse
+                    createCourse,
+                    updateCourse
                 }
             }
         }>

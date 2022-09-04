@@ -8,6 +8,7 @@ const CourseDetails = (props)=>{
     const { actions } = useContext(Context);
     const [ loading, setLoading ] = useState(true);
     const [ details, setDetails ] = useState(null);
+    let key = 1;
 
     useEffect(()=>{
         actions.getCourse(id)
@@ -43,7 +44,11 @@ const CourseDetails = (props)=>{
                         <ol>
                             {
                                 details.materialsNeeded
-                                ? details.materialsNeeded.map(item=><li>{item}</li>)
+                                ? details.materialsNeeded.split(/\r?\n/).map(item=>{
+                                    if(item.trim().length !== 0){
+                                        return <li key={key++}>{item.trim()}</li>
+                                    }
+                                })
                                 : <li>Not Available</li>
                             }
                         </ol>
