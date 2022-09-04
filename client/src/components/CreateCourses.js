@@ -32,6 +32,10 @@ const CreateCourses = ()=>{
         }
     }, [flag]);
 
+    const cancel = ()=>{
+        navigate('/');
+    }
+
 
     const submit = (e)=>{
         e.preventDefault();
@@ -73,7 +77,7 @@ const CreateCourses = ()=>{
                     </label>
                     <div className="buttons-container">
                         <button className="button small" type="submit">Submit</button>
-                        <button className="button small">cancel</button>
+                        <button className="button small" onClick={cancel}>cancel</button>
                     </div>
                 </fieldset>
 

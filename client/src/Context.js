@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import Cookies from 'js-cookie';
 import Data from './Data';
 
 export const Context = React.createContext(); 
 
 export const Provider = (props)=>{
     const data = new Data();
+    const cookie_data_user = Cookies.get('authUser');
+    const cookie_data_password = Cookies.get('password');
+    const user_cookie = cookie_data_user? JSON.parse( cookie_data_user ) : null;
+    const password_cookie = cookie_data_password? JSON.parse( cookie_data_password ) : null
+
     const [allUsers, setAllUsers] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
-
-    const [authUser, setAuthUser] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [authUser, setAuthUser] = useState(user_cookie? user_cookie:null);
+    const [password, setPassword] = useState(password_cookie? password_cookie:null);
 
     const getAllUsers = async ()=> {
         const something = await data.getAllUsers();
@@ -21,6 +26,9 @@ export const Provider = (props)=>{
         if(user !== null){
             setAuthUser(user);
             setPassword(password);
+
+            Cookies.set('authUser', JSON.stringify(user), { expires: 1 });
+            Cookies.set('password', password, {expires: 1});
         }
         return user;
     }
