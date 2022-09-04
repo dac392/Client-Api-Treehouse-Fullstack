@@ -7,6 +7,7 @@ import Courses from './components/Courses';
 import LogIn from './components/LogIn';
 import PrivateRoute from './PrivateRoute';
 import CreateCourses from './components/CreateCourses';
+import CourseDetails from './components/CourseDetails';
 
 const App = () => {
 
@@ -26,8 +27,8 @@ const App = () => {
         <Route exact path="/" element={ <Courses /> }/>
         <Route path="/courses/" element={ <PrivateRoute /> }>
           <Route path="create" element={ <CreateCourses /> } />
-          <Route path=":id/update" element={ <h1>Update</h1> }/>
-          <Route path=":id" element={ <h1>Something</h1> } />
+          <Route path=":id/update" element={ <h1>Something</h1> }/>
+          <Route path=":id" element={ <CourseDetails /> } />
         </Route>
         <Route path="/login" element={ <LogIn /> } />
       </Routes>

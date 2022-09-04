@@ -38,6 +38,10 @@ export const Provider = (props)=>{
         return courses;
     }
 
+    const getCourse = async(id)=>{
+        return await data.getCourseById(id);
+    }
+
     const createCourse = async (title, user, password, description, estimatedTime, materialsNeeded)=>{
         if (estimatedTime.length === 0){
             estimatedTime = null;
@@ -64,6 +68,7 @@ export const Provider = (props)=>{
                     setAllUsers,
                     logIn,
                     getCourses,
+                    getCourse,
                     createCourse
                 }
             }

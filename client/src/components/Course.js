@@ -7,7 +7,7 @@ const Course = ( { course } )=>{
                 {
                     course.id === -1
                     ?   <Link to="/courses/create">{course.text}</Link>
-                    :   <Link to={`/course/${course.id}`} >
+                    :   <Link to={`/courses/${course.id}`} >
                             <p>Course</p>
                             <h3>{course.title}</h3>
                         </Link>    
