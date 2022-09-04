@@ -7,6 +7,7 @@ import { Provider } from './Context';
 
 import './styles/global.css';
 import './styles/reset.css';
+import './styles/subnav.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

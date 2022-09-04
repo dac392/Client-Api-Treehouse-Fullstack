@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Context } from "../Context";
+import SubNav from "./SubNav";
 
 const CourseDetails = (props)=>{
     const { id } = useParams()
@@ -15,43 +16,37 @@ const CourseDetails = (props)=>{
             .finally(setLoading(false));
     }, []);
     return (
-        <div className="page-container">
-            <nav>
-                <ul className="sub-nav">
-                    <li className="button-nav"><Link to={`/courses/${id}/update`}>Update Course</Link></li>
-                    <li className="button-nav"><Link to={`/courses/${id}/delete`}>Delete Course</Link></li>
-                    <li className="button-nav"><Link to="/">Return to List</Link></li>
-                </ul>
-            </nav>
+        <div className="details-page">
+            <SubNav />
+            <h2 className="page-name">Course Details</h2>
             {
                 ( loading || !details )
                 ? <p>Loading...</p>
                 : <article>
                     <section>
-                        <h2>Course Details</h2>
-                        <p>COURSE</p>
+                        <p className="sub-label">COURSE</p>
                         <hr />
-                        <h1>{details.title}</h1>
+                        <h1 className="title">{details.title}</h1>
                         <p>By {details.user.firstName} {details.user.lastName}</p>
                         <p>{details.description}</p>
                     </section>
                     <section>
-                        <p>ESTIMATED TIME</p>
+                        <p className="sub-label">ESTIMATED TIME</p>
                         <hr/>
                         {
                             (details.estimatedTime)
                             ? <p>{details.estimatedTime} hours</p>
                             : <p>Not Available</p>
                         }
-                        <p>MATERIALS NEEDED</p>
+                        <p className="sub-label">MATERIALS NEEDED</p>
                         <hr />
-                        <ul>
+                        <ol>
                             {
                                 details.materialsNeeded
                                 ? details.materialsNeeded.map(item=><li>{item}</li>)
                                 : <li>Not Available</li>
                             }
-                        </ul>
+                        </ol>
                     </section>
                 </article>
             }
