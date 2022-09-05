@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoute';
 import CreateCourses from './components/CreateCourses';
 import CourseDetails from './components/CourseDetails';
 import UpdateCourse from './components/UpdateCourse';
+import Delete from './components/Delete';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="create" element={ <CreateCourses /> } />
           <Route path=":id/update" element={ <UpdateCourse /> }/>
           <Route path=":id" element={ <CourseDetails /> } />
+          <Route path=":id/delete" element={ <Delete /> } />
         </Route>
         <Route path="/login" element={ <LogIn /> } />
       </Routes>

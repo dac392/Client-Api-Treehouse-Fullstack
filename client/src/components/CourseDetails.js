@@ -5,14 +5,14 @@ import SubNav from "./SubNav";
 
 const CourseDetails = (props)=>{
     const { id } = useParams()
-    const { actions } = useContext(Context);
+    const { actions, details } = useContext(Context);
     const [ loading, setLoading ] = useState(true);
-    const [ details, setDetails ] = useState(null);
+
     let key = 1;
 
     useEffect(()=>{
         actions.getCourse(id)
-            .then(res=>setDetails(res))
+            .then(res=>actions.setDetails(res))
             .catch(err=>console.log(err.message))
             .finally(setLoading(false));
     }, []);
@@ -21,7 +21,7 @@ const CourseDetails = (props)=>{
             <SubNav />
             <h2 className="page-name">Course Details</h2>
             {
-                ( loading || !details )
+                ( loading || details===null )
                 ? <p>Loading...</p>
                 : <article>
                     <section>

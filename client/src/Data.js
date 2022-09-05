@@ -110,6 +110,15 @@ export default class Data {
         }
     }
 
+    async deleteCourse(id, user){
+        const response = await this.api(`/courses/${id}`, 'DELETE', null, true, user);
+        if(response.status === 204){
+            return [];
+        }else{
+            return null;
+        }
+    }
+
     async getAllUsers(){
         const response = await this.api('/users-all', 'GET');
 

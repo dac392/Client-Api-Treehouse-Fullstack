@@ -15,6 +15,7 @@ export const Provider = (props)=>{
     const [isLoading, setIsLoading] = useState([]);
     const [authUser, setAuthUser] = useState(user_cookie? user_cookie:null);
     const [password, setPassword] = useState(password_cookie? password_cookie:null);
+    const [ details, setDetails ] = useState(null);
 
     const getAllUsers = async ()=> {
         const something = await data.getAllUsers();
@@ -38,7 +39,7 @@ export const Provider = (props)=>{
         return courses;
     }
 
-    const getCourse = async(id)=>{
+    const getCourse = async (id)=>{
         const something = await data.getCourseById(id).then(data=>data);
         return something
     }
@@ -60,6 +61,14 @@ export const Provider = (props)=>{
         return response;
     }
 
+    const deleteCourse = async (id)=>{
+        console.log(id);
+        const user = { username: authUser.emailAddress, password}
+        const response = await data.deleteCourse(id, user);
+        return (response.length===0)? 204:null;
+    }
+    
+
     return (
         <Context.Provider value={
             {
@@ -67,6 +76,7 @@ export const Provider = (props)=>{
                 isLoading,
                 authUser,
                 password,
+                details,
                 actions: {
                     getAllUsers,
                     setAllUsers,
@@ -75,7 +85,9 @@ export const Provider = (props)=>{
                     getCourses,
                     getCourse,
                     createCourse,
-                    updateCourse
+                    updateCourse,
+                    setDetails,
+                    deleteCourse
                 }
             }
         }>
