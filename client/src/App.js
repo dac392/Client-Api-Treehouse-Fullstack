@@ -10,6 +10,7 @@ import CreateCourses from './components/CreateCourses';
 import CourseDetails from './components/CourseDetails';
 import UpdateCourse from './components/UpdateCourse';
 import Delete from './components/Delete';
+import SignUp from './components/SignUp';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path=":id/delete" element={ <Delete /> } />
         </Route>
         <Route path="/login" element={ <LogIn /> } />
+        <Route path="/signup" element={ <SignUp /> } />
       </Routes>
     </div>
   );
