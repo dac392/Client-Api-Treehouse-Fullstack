@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SignUpElement from "./SignUpElement";
 import Form from "./Form";
+import { Context } from "../Context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const NEUTRAL = 100;
 const SUCCESS = 200;
@@ -8,17 +10,54 @@ const REDIRECT = 300
 const FAILURE = 400;
 
 const SignUp = ()=>{
+    // Context / set up
+    const navigate = useNavigate();
+    const { actions } = useContext(Context);
+    const location = useLocation();
 
+    // State
+    const [ firstName, setfName ] = useState('');
+    const [ lastName, setlName ] = useState('');
+    const [ emailAddress, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
     const [ flag, setFlag ] = useState(NEUTRAL);
+    const [ errors, setErros ] = useState([]); 
 
 
-    const onFNChange = (e)=>{e.preventDefault()}
-    const onLNChange = (e)=>{e.preventDefault()}
-    const onEmailChange = (e)=>{e.preventDefault()}
-    const onPasswordChange = (e)=>{e.preventDefault()}
+    const onFNChange = (e)=>{ setfName(e.target.value) }
+    const onLNChange = (e)=>{ setlName(e.target.value) }
+    const onEmailChange = (e)=>{ setEmail(e.target.value) }
+    const onPasswordChange = (e)=>{ setPassword(e.target.value) }
+
+    useEffect(()=>{
+        if(flag === SUCCESS ){
+            if(location.state && location.state.form){
+                navigate(location.state.form);
+            }else{
+                navigate('/');
+            }
+        } else if (flag === REDIRECT){
+            navigate('/');
+        }else if( flag === FAILURE ){
+            navigate('/error');
+        }
+    }, [flag]);
 
     const submit = ()=>{
-
+        const user = { firstName, lastName, emailAddress, password };
+        actions.signUp(user)            
+        .then( status=>{
+            console.log(status)
+            if( status !== 201 ){
+                setErros(['Sign-in was unsuccessful']);
+            } else{
+                setFlag(SUCCESS);
+            }
+        } )
+        .catch( err=>{
+            console.log(err);
+            setFlag(FAILURE);
+        } )
     }
     const cancel = ()=>{
         setFlag(REDIRECT);

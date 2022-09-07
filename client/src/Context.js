@@ -34,6 +34,15 @@ export const Provider = (props)=>{
         return user;
     }
 
+    const signUp = async (user)=>{
+        const status = await data.createUser(user);
+        if (status === 201){
+            return status;
+        }
+        console.log(status);
+        return null;
+    }
+
     const getCourses = async ()=>{
         const courses = await data.getCourses();
         return courses;
@@ -82,6 +91,7 @@ export const Provider = (props)=>{
                     setAllUsers,
                     setIsLoading,
                     logIn,
+                    signUp,
                     getCourses,
                     getCourse,
                     createCourse,

@@ -57,7 +57,14 @@ export default class Data {
      * @param {JSON} user - information for your new user
      */
     async createUser(user){
-
+        const response = await this.api('/users', 'POST', user);
+        if (response.status === 201){
+            console.log("Sign up successful");
+            return response.status;
+        } else {
+            console.log(response.json());
+            return 'something went wrong';
+        }
     }
 
     async getCourses(){
