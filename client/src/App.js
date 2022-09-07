@@ -11,6 +11,7 @@ import CourseDetails from './components/CourseDetails';
 import UpdateCourse from './components/UpdateCourse';
 import Delete from './components/Delete';
 import SignUp from './components/SignUp';
+import LogOut from './components/LogOut';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         </Route>
         <Route path="/login" element={ <LogIn /> } />
         <Route path="/signup" element={ <SignUp /> } />
+        <Route path='/logout' element={ <LogOut /> } />
       </Routes>
     </div>
   );

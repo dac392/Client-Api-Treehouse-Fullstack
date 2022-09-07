@@ -35,6 +35,12 @@ export const Provider = (props)=>{
         return user;
     }
 
+    const logOut = () => {
+        setAuthUser(null);
+        setPassword(null);
+        Cookies.remove('authUser');
+      };
+
     const signUp = async (user)=>{
         const status = await data.createUser(user);
         if (status === 201){
@@ -93,6 +99,7 @@ export const Provider = (props)=>{
                     setAllUsers,
                     setIsLoading,
                     logIn,
+                    logOut,
                     signUp,
                     getCourses,
                     getCourse,
