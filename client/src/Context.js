@@ -28,15 +28,17 @@ export const Provider = (props)=>{
             setAuthUser(user);
             setPassword(password);
 
-            Cookies.set('authUser', JSON.stringify(user), { expires: 1 });
-            Cookies.set('password', password, {expires: 1});
+            Cookies.set('authUser', JSON.stringify(user), { sameSite: "strict", expires: 1 });
+            Cookies.set('password', password, { sameSite: "strict", expires: 1 });
         }
+        console.log(authUser);
         return user;
     }
 
     const signUp = async (user)=>{
         const status = await data.createUser(user);
         if (status === 201){
+            await logIn(user.emailAddress, user.password);
             return status;
         }
         console.log(status);
