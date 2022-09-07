@@ -7,7 +7,6 @@ const CourseDetails = (props)=>{
     const { id } = useParams()
     const { actions, details } = useContext(Context);
     const [ loading, setLoading ] = useState(true);
-
     let key = 1;
 
     useEffect(()=>{
