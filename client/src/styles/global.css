@@ -8,6 +8,14 @@ body, a{
     color: #38302e;
 }
 
+blockquote {
+    color: #111;
+    background-color: #eee;
+    margin: 0;
+    padding-left: 3em;
+    border-left: 0.5em #aaa solid;
+}
+
 header{
     background-color: #E2B6CF;
 

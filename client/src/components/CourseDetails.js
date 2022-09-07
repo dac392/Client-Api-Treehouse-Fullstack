@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useParams } from "react-router-dom";
+import remarkGfm from "remark-gfm";
 import { Context } from "../Context";
 import SubNav from "./SubNav";
 
@@ -28,7 +30,7 @@ const CourseDetails = (props)=>{
                         <hr />
                         <h1 className="title">{details.title}</h1>
                         <p>By {details.user.firstName} {details.user.lastName}</p>
-                        <p>{details.description}</p>
+                        <ReactMarkdown children={details.description} remarkPlugins={[remarkGfm]} />
                     </section>
                     <section>
                         <p className="sub-label">ESTIMATED TIME</p>
@@ -40,7 +42,12 @@ const CourseDetails = (props)=>{
                         }
                         <p className="sub-label">MATERIALS NEEDED</p>
                         <hr />
-                        <ol>
+                        {
+                            details.materialsNeeded
+                            ? <ReactMarkdown children={details.materialsNeeded} remarkPlugins={[remarkGfm]} />
+                            : <ol><li>Not Available</li></ol>
+                        }
+                        {/* <ol>
                             {
                                 details.materialsNeeded
                                 ? details.materialsNeeded.split(/\r?\n/).map(item=>{
@@ -50,7 +57,7 @@ const CourseDetails = (props)=>{
                                 })
                                 : <li>Not Available</li>
                             }
-                        </ol>
+                        </ol> */}
                     </section>
                 </article>
             }
