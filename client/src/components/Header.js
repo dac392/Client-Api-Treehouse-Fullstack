@@ -13,8 +13,8 @@ const Header = ()=>{
           {
             authUser
             ? <ul className='header--signedin'>
-                <li><p className='signin'>Welcome, {authUser.firstName} {authUser.lastName}</p></li>
-                <li><Link className="signin" to="/logout">Log Out (not working)</Link></li>
+                <li>Welcome, {authUser.firstName} {authUser.lastName}</li>
+                <li><Link className="signin" to="/logout">Log Out</Link></li>
               </ul>
             : <ul className='header--signedin'>
                 <li><Link className="signup" to="/signup">Sign Up</Link></li>

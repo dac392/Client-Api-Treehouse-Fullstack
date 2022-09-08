@@ -6,7 +6,6 @@ import Form from "./Form";
 const Delete = ()=>{
     const navigate = useNavigate();
     const { actions, details, setDetails } = useContext(Context);
-
     const { id } =  useParams();
 
     const submit = (e)=>{
@@ -24,17 +23,18 @@ const Delete = ()=>{
     }
 
     return (
-        <div>
+        <div className="delete--container">
             {
                 (details === null)
                 ? <Navigate to="/" />
                 : <Form 
                     cancel={cancel}
                     submit={submit}
+                    errors={[]}
                     submitButtonText={"Delete"}
                     elements={ ()=>(
                             <div className="center">
-                                <label>Are you sure you want to delete {details.title}</label>
+                                <label>Are you sure you want to delete course: <strong>{details.title}</strong></label>
                             </div>
                             
                         )

@@ -42,7 +42,11 @@ const CreateCourses = ({ isUpdate, details, id })=>{
 
     const cancel = (e)=>{
         e.preventDefault();
-        setFlag(SUCCESS);
+        if(isUpdate){
+            navigate(-1);
+        }else{
+            setFlag(SUCCESS);
+        }
     }
 
     const submit = (e)=>{
@@ -86,56 +90,57 @@ const CreateCourses = ({ isUpdate, details, id })=>{
             <h1>Create Course</h1>
             <ErrorsDisplay errors={errors} />
             <form onSubmit={submit}>
-                <fieldset>
-                    <label>
-                        Course Title:
-                        <input 
-                            className="course-input"
-                            type="text"
-                            id="title"
-                            name="title"
-                            onChange={onTitleChange}
-                            value={title}
-                        />
-                    </label>
-                    <label>By {authUser.firstName} {authUser.lastName}</label>
-                    <label>
-                        Course Description
-                        <textarea 
-                            onChange={onDescriptionChange} 
-                            name="description" 
-                            value={description} 
+                <div className="field--container">
+                    <fieldset>
+                        <label>
+                            Course Title:
+                            <input 
+                                className="course-input"
+                                type="text"
+                                id="title"
+                                name="title"
+                                onChange={onTitleChange}
+                                value={title}
+                            />
+                        </label>
+                        <label>By {authUser.firstName} {authUser.lastName}</label>
+                        <label>
+                            Course Description
+                            <textarea 
+                                onChange={onDescriptionChange} 
+                                name="description" 
+                                value={description} 
 
-                        />
-                    </label>
-                    <div className="buttons-container">
+                            />
+                        </label>
+                    </fieldset>
+
+                    <fieldset>
+                        <label>
+                            Estimated Time
+                            <input 
+                                className="course-input" 
+                                type="text" 
+                                id="estimatedTime" 
+                                name="estimatedTime" 
+                                onChange={onTimeChange}
+                                value={estimatedTime}
+                            />
+                        </label>
+                        <label>
+                            Materials Needed
+                            <textarea 
+                                onChange={onMaterialsChange} 
+                                name="materialsNeeded" 
+                                value={materialsNeeded}
+                            />
+                        </label>
+                    </fieldset>
+                </div>
+                <div className="buttons-container">
                         <button className="button small" type="submit">Submit</button>
                         <button className="button small" onClick={cancel}>cancel</button>
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <label>
-                        Estimated Time
-                        <input 
-                            className="course-input" 
-                            type="text" 
-                            id="estimatedTime" 
-                            name="estimatedTime" 
-                            onChange={onTimeChange}
-                            value={estimatedTime}
-                        />
-                    </label>
-                    <label>
-                        Materials Needed
-                        <textarea 
-                            onChange={onMaterialsChange} 
-                            name="materialsNeeded" 
-                            value={materialsNeeded}
-                            placeholder={"Use a new line for each material needed"}
-                        />
-                    </label>
-                </fieldset>
+                </div>
             </form>
         </div>
     );
