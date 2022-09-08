@@ -214,6 +214,32 @@ textarea{
     padding-top: 0;
 }
 
+.extra-container{
+    height: 45vh;
+    padding: 5rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.page-link{
+    font-size: 1.25rem;
+    max-width: 200px;
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid #38302e;
+    color: #38302e;
+    transition: all ease-in-out 0.5s;
+}
+
+.page-link:hover{
+    background-color:#38302e;
+    color: #fff;
+    font-weight: bold;
+}
+
+
 
 @media screen and (max-width: 900px) {
     .field--container{

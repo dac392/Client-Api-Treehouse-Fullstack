@@ -12,6 +12,9 @@ import UpdateCourse from './components/UpdateCourse';
 import Delete from './components/Delete';
 import SignUp from './components/SignUp';
 import LogOut from './components/LogOut';
+import Error from './components/Error';
+import NotFound from './components/NotFound';
+import Forbiden from './components/Forbiden';
 
 const App = () => {
   return (
@@ -29,6 +32,9 @@ const App = () => {
         <Route path="/login" element={ <LogIn /> } />
         <Route path="/signup" element={ <SignUp /> } />
         <Route path='/logout' element={ <LogOut /> } />
+        <Route path='/forbiden' element={ <Forbiden /> } />
+        <Route path='/error' element={ <Error /> } />
+        <Route path='/*' element={<NotFound />} />
       </Routes>
     </div>
   );
