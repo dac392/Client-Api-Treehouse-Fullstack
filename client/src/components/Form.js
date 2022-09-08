@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ErrorsDisplay from "./ErrorsDisplay";
 
 const Form = ({ cancel, errors, submit, submitButtonText, elements })=>{
 
@@ -14,6 +15,7 @@ const Form = ({ cancel, errors, submit, submitButtonText, elements })=>{
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <ErrorsDisplay errors={errors} />
                 {elements()}
                 <div className="button-list">
                     <button className="button" type="submit">{submitButtonText}</button>

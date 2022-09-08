@@ -41,9 +41,9 @@ const LogIn = ()=>{
 
     const submit = ()=>{
         actions.logIn(username, password)
-            .then( user=>{
-                if( user===null ){
-                    setErros(['Sign-in was unsuccessful']);
+            .then( ({ user, errors })=>{
+                if( errors ){
+                    setErros(errors);
                 } else{
                     setFlag(SUCCESS);
                     console.log(`SUCCESS! ${username} is now signed in!`);

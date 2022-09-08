@@ -41,12 +41,13 @@ export default class Data {
     async getUser(username, password){
         const response = await this.api('/users', 'GET', null, true, {username, password});
         if (response.status === 200){
-            const something = await response.json().then(data=>data);
-            return something;
+            const user = await response.json().then(data=>data);
+            return { user, errors: null};
 
         } else if( response.status === 401 ){
-            console.log(response.json());
-            return null;
+            // accessed denied (authorization failed)
+            const errors = ['Access denied: username or password may be incorrect'];
+            return { user: null, errors };
         } else{
             throw new Error();
         }
@@ -60,10 +61,10 @@ export default class Data {
         const response = await this.api('/users', 'POST', user);
         if (response.status === 201){
             console.log("Sign up successful");
-            return response.status;
+            return { status: response.status, errors: null};
         } else {
-            console.log(response.json());
-            return 'something went wrong';
+            const errors = response.json().then(res=>res.errors)
+            return { status: response.status, errors};
         }
     }
 

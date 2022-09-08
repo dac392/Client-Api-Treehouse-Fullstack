@@ -46,17 +46,17 @@ const SignUp = ()=>{
     const submit = ()=>{
         const user = { firstName, lastName, emailAddress, password };
         actions.signUp(user)            
-        .then( status=>{
-            console.log(status)
+        .then( ({ status, errors })=>{
             if( status !== 201 ){
-                setErros(['Sign-in was unsuccessful']);
+                errors.then(errs=>setErros(errs));
+
             } else{
                 setFlag(SUCCESS);
             }
         } )
         .catch( err=>{
             console.log(err);
-            setFlag(FAILURE);
+            // setFlag(FAILURE);
         } )
     }
     const cancel = ()=>{
@@ -68,6 +68,7 @@ const SignUp = ()=>{
                 <h1>Sign Up</h1>
                 <Form 
                     cancel={cancel}
+                    errors={errors}
                     submit={submit}
                     submitButtonText={"Sign Up"}
                     elements={ ()=>(

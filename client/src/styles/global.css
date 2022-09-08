@@ -184,6 +184,14 @@ textarea{
     font-size: 1.25rem;
 }
 
+.validation--errors--label{
+    color: white;
+    margin-top: 1rem;
+}
+.validation-errors{
+    color: white;
+}
+
 
 
 

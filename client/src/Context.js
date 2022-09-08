@@ -23,7 +23,10 @@ export const Provider = (props)=>{
     }
 
     const logIn = async (username, password)=>{
-        const user = await data.getUser(username, password);
+        const { user, errors } = await data.getUser(username, password);
+        if (errors){
+            return { user, errors };
+        }
         if(user !== null){
             setAuthUser(user);
             setPassword(password);
@@ -31,8 +34,7 @@ export const Provider = (props)=>{
             Cookies.set('authUser', JSON.stringify(user), { sameSite: "strict", expires: 1 });
             Cookies.set('password', password, { sameSite: "strict", expires: 1 });
         }
-        console.log(authUser);
-        return user;
+        return { user, errors: null };
     }
 
     const logOut = () => {
@@ -42,13 +44,13 @@ export const Provider = (props)=>{
       };
 
     const signUp = async (user)=>{
-        const status = await data.createUser(user);
+        const { status, errors } = await data.createUser(user);
         if (status === 201){
             await logIn(user.emailAddress, user.password);
-            return status;
+            return { status, errors };
         }
-        console.log(status);
-        return null;
+
+        return { status, errors };
     }
 
     const getCourses = async ()=>{
