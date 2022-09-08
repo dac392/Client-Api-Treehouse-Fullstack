@@ -87,8 +87,7 @@ export default class Data {
         if(response.status === 200){
             const something = await response.json().then(data=>data);
             return something;
-        }else if( response.status === 401 ){
-            console.log(response.json());
+        }else if( response.status === 404 ){
             return null;
         } else{
             throw new Error();

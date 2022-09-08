@@ -25,7 +25,6 @@ const LogIn = ()=>{
             if(location.state && location.state.form){
                 navigate(location.state.form);
             }else{
-                // navigate('/authenticated');
                 navigate('/');
             }
         } else if (flag === REDIRECT){
@@ -46,11 +45,9 @@ const LogIn = ()=>{
                     setErros(errors);
                 } else{
                     setFlag(SUCCESS);
-                    console.log(`SUCCESS! ${username} is now signed in!`);
                 }
             } )
             .catch( err=>{
-                console.log(err);
                 setFlag(FAILURE);
             } )
     }

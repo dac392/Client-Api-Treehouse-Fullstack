@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import remarkGfm from "remark-gfm";
 import { Context } from "../Context";
 import SubNav from "./SubNav";
 
 const CourseDetails = (props)=>{
+    const navigate = useNavigate();
     const { id } = useParams()
     const { actions, details } = useContext(Context);
     const [ loading, setLoading ] = useState(true);
@@ -13,8 +14,13 @@ const CourseDetails = (props)=>{
 
     useEffect(()=>{
         actions.getCourse(id)
-            .then(res=>actions.setDetails(res))
-            .catch(err=>console.log(err.message))
+            .then(res=>{
+                if(res===null){
+                    navigate('/notfound');
+                }
+                actions.setDetails(res)
+            })
+            .catch(err=>navigate('/error'))
             .finally(setLoading(false));
     }, []);
     return (

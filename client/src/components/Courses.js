@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../Context";
 import Course from "./Course";
 
 const Courses = ()=>{
+    const navigate = useNavigate();
     const { actions } = useContext(Context);
     
     const [ courses, setCourses ] = useState([]);
@@ -14,7 +16,7 @@ const Courses = ()=>{
     useEffect(()=>{
         actions.getCourses()
             .then(response=>setCourses([...response, lastChild]))
-            .catch(error => console.log(error.messgage))
+            .catch(error => navigate('/error'))
             .finally(setLoading(false));
     }, []);
 

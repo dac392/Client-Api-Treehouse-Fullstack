@@ -220,7 +220,8 @@ textarea{
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    gap: 1rem;
+    /* justify-content: space-evenly; */
 }
 
 .page-link{

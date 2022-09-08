@@ -66,14 +66,13 @@ const CreateCourses = ({ isUpdate, details, id })=>{
                     }else{
                         setErrors(errors);
                     }
-                }).catch(err=>console.log(err));
+                }).catch(err=> setFlag(FAILURE));
         }else{
             actions.createCourse(title, authUser, password, description, estimatedTime, materialsNeeded)
             .then( ({status, errors}) => {
                 if (status === 201){
                     setFlag(SUCCESS);
                 }else{
-                    console.log(errors)
                     setErrors(errors);
                 }
             })

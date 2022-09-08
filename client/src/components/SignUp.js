@@ -55,8 +55,7 @@ const SignUp = ()=>{
             }
         } )
         .catch( err=>{
-            console.log(err);
-            // setFlag(FAILURE);
+            setFlag(FAILURE);
         } )
     }
     const cancel = ()=>{

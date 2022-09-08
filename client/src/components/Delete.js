@@ -14,7 +14,7 @@ const Delete = ()=>{
             if (res===204){
                 navigate('/');
             }else{
-                console.log("there was something wrong while deleting")
+                navigate('/error')
             }
         })
     }
