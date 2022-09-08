@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../Context";
 
+import ErrorsDisplay from "./ErrorsDisplay";
+
 const NEUTRAL = 100;
 const SUCCESS = 200;
 const REDIRECT = 300
@@ -15,6 +17,7 @@ const CreateCourses = ({ isUpdate, details, id })=>{
     const [ description, setDescription ] = useState("");
     const [ estimatedTime, setTime ] = useState("");
     const [ materialsNeeded, setMaterials ] = useState("");
+    const [ errors, setErrors ] = useState([]);
     const [ flag, setFlag ] = useState(NEUTRAL);
 
     const onTitleChange = (e)=>setTitle(e.target.value);
@@ -53,20 +56,21 @@ const CreateCourses = ({ isUpdate, details, id })=>{
             }
             const user = {username: authUser.emailAddress, password};
             actions.updateCourse(id, course, user)
-                .then(res=>{
-                    if (res !=null){
+                .then(({status, errors})=>{
+                    if (status === 204){
                         setFlag(REDIRECT);
                     }else{
-                        console.log("error");
+                        setErrors(errors);
                     }
                 }).catch(err=>console.log(err));
         }else{
             actions.createCourse(title, authUser, password, description, estimatedTime, materialsNeeded)
-            .then( response => {
-                if (response !== null){
+            .then( ({status, errors}) => {
+                if (status === 201){
                     setFlag(SUCCESS);
                 }else{
-                    setFlag(FAILURE);
+                    console.log(errors)
+                    setErrors(errors);
                 }
             })
             .catch( err=>{
@@ -80,6 +84,7 @@ const CreateCourses = ({ isUpdate, details, id })=>{
     return (
         <div className="page-container">
             <h1>Create Course</h1>
+            <ErrorsDisplay errors={errors} />
             <form onSubmit={submit}>
                 <fieldset>
                     <label>

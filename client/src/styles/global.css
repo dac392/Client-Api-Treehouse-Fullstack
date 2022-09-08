@@ -184,6 +184,11 @@ textarea{
     font-size: 1.25rem;
 }
 
+.background--coffee{
+    background-color: #38302e;
+    padding: 0.5rem 1rem 1rem 1rem;
+    border-radius: 0.5rem;
+}
 .validation--errors--label{
     color: white;
     margin-top: 1rem;

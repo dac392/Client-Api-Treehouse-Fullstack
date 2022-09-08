@@ -98,12 +98,10 @@ export default class Data {
     async createCourse(obj, user){
         const response = await this.api('/courses', 'POST', obj, true, {username: user.emailAddress, password: user.password});
         if(response.status === 201){
-            return 201;
+            return {response: response.status, errors:null};
         } else if( response.status >= 400 ){
-            response.json().then(data => {
-                console.log(data);
-            });
-            return null;
+            const errors = await response.json().then(data => data.errors);
+            return { status: response.status, errors };
         } else{
             throw new Error("something happened");
         }
@@ -112,9 +110,10 @@ export default class Data {
     async updateCourse(id, course, user){
         const response = await this.api(`/courses/${id}`, 'PUT', course, true, user);
         if(response.status === 204){
-            return [];
+            return {status: response.status, errors:null};
         }else{
-            return null;
+            const errors = await response.json().then(res=>res.errors);
+            return {status: response.status, errors:errors};
         }
     }
 
