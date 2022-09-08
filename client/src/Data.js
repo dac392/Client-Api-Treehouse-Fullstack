@@ -98,7 +98,7 @@ export default class Data {
     async createCourse(obj, user){
         const response = await this.api('/courses', 'POST', obj, true, {username: user.emailAddress, password: user.password});
         if(response.status === 201){
-            return {response: response.status, errors:null};
+            return {status: response.status, errors:null};
         } else if( response.status >= 400 ){
             const errors = await response.json().then(data => data.errors);
             return { status: response.status, errors };

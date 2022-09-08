@@ -72,6 +72,7 @@ export const Provider = (props)=>{
         }
         user.password = password;
         const response = await data.createCourse({title, description, estimatedTime, materialsNeeded}, user);
+        console.log(response);
         return response;
     }
 
