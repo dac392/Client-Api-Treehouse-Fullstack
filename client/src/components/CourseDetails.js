@@ -5,13 +5,19 @@ import remarkGfm from "remark-gfm";
 import { Context } from "../Context";
 import SubNav from "./SubNav";
 
+/**
+ * 
+ * @returns CourseDetails component
+ */
 const CourseDetails = ()=>{
     const navigate = useNavigate();
     const { id } = useParams()
     const { actions, details } = useContext(Context);
     const [ loading, setLoading ] = useState(true);
-    // let key = 1;
 
+    /**
+     * navigates on failure, setDetails() and setLoading() on success
+     */
     useEffect(()=>{
         actions.getCourse(id)
             .then(res=>{

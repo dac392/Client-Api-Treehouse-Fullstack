@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/**
+ * Course component
+ * @param {JSON} param course information
+ * @returns 
+ */
 const Course = ( { course } )=>{
     return (
             <li className="course">  

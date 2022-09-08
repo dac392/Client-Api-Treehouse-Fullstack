@@ -68,6 +68,10 @@ export default class Data {
         }
     }
 
+    /**
+     * Get the list of all courses to be displayed in home page
+     * @returns list of Courses
+     */
     async getCourses(){
         const response = await this.api('/courses', 'GET');
         if (response.status === 200){
@@ -82,6 +86,11 @@ export default class Data {
         }
     }
 
+    /**
+     * Gets the data for a course given the course id
+     * @param {int} id id of the course being requested 
+     * @returns Course information
+     */
     async getCourseById(id){
         const response = await this.api(`/courses/${id}`, 'GET');
         if(response.status === 200){
@@ -94,6 +103,12 @@ export default class Data {
         }
     }
 
+    /**
+     * POST a new course
+     * @param {JSON} obj 
+     * @param {JSON} user 
+     * @returns {status, errors}
+     */
     async createCourse(obj, user){
         const response = await this.api('/courses', 'POST', obj, true, {username: user.emailAddress, password: user.password});
         if(response.status === 201){
@@ -106,6 +121,13 @@ export default class Data {
         }
     }
 
+    /**
+     * Updates the information to a given course.
+     * @param {int} id course id
+     * @param {JSON} course new course information
+     * @param {JSON} user user requesting the PUT
+     * @returns {status, errors}
+     */
     async updateCourse(id, course, user){
         const response = await this.api(`/courses/${id}`, 'PUT', course, true, user);
         if(response.status === 204){
@@ -116,6 +138,12 @@ export default class Data {
         }
     }
 
+    /**
+     * sends a DELETE request for a course
+     * @param {int} id course id
+     * @param {JSON} user user information
+     * @returns [] or null
+     */
     async deleteCourse(id, user){
         const response = await this.api(`/courses/${id}`, 'DELETE', null, true, user);
         if(response.status === 204){
@@ -125,6 +153,10 @@ export default class Data {
         }
     }
 
+    /**
+     * Convinience functions used for debugging purposes
+     * @returns [] of all users
+     */
     async getAllUsers(){
         const response = await this.api('/users-all', 'GET');
 

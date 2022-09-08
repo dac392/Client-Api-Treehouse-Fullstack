@@ -16,6 +16,10 @@ import Error from './components/Error';
 import NotFound from './components/NotFound';
 import Forbiden from './components/Forbiden';
 
+/**
+ * Main container for application
+ * @returns React application
+ */
 const App = () => {
   return (
     <div>

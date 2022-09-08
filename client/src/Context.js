@@ -4,6 +4,11 @@ import Data from './Data';
 
 export const Context = React.createContext(); 
 
+/**
+ * provides global state for the application
+ * @param {*} props 
+ * @returns Context
+ */
 export const Provider = (props)=>{
     const data = new Data();
     const cookie_data_user = Cookies.get('authUser');
