@@ -13,7 +13,7 @@ const LogIn = ()=>{
     const navigate = useNavigate();
     const location = useLocation();
     const { actions } = useContext(Context);
-    const [flag, setFlag] = useState('');
+    const [flag, setFlag] = useState(NEUTRAL);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErros] = useState([]);

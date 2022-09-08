@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ errors }) => {
+ const ErrorsDisplay = ({ errors }) => {
     let errorsDisplay = null;
   
     if (errors.length) {
@@ -18,3 +18,5 @@ export default ({ errors }) => {
   
     return errorsDisplay;
   }
+
+  export default ErrorsDisplay;

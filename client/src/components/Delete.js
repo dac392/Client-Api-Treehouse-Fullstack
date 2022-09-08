@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Context } from "../Context";
 import Form from "./Form";
 
 const Delete = ()=>{
     const navigate = useNavigate();
-    const { actions, details, setDetails } = useContext(Context);
+    const { actions, details } = useContext(Context);
     const { id } =  useParams();
 
     const submit = (e)=>{
