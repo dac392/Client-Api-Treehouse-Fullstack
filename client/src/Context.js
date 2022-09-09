@@ -13,8 +13,8 @@ export const Provider = (props)=>{
     const data = new Data();
     const cookie_data_user = Cookies.get('authUser');
     const cookie_data_password = Cookies.get('password');
-    const user_cookie = cookie_data_user? JSON.parse( cookie_data_user ).password : null;
-    const password_cookie = cookie_data_password? JSON.parse( cookie_data_password ) : null
+    const user_cookie = cookie_data_user? JSON.parse( cookie_data_user ) : null;
+    const password_cookie = cookie_data_password? JSON.parse( cookie_data_password ).password : null
 
     const [allUsers, setAllUsers] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
