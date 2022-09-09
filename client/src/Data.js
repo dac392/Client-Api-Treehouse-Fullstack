@@ -60,7 +60,7 @@ export default class Data {
     async createUser(user){
         const response = await this.api('/users', 'POST', user);
         if (response.status === 201){
-            console.log("Sign up successful");
+            // console.log("Sign up successful");
             return { status: response.status, errors: null};
         } else {
             const errors = response.json().then(res=>res.errors)
@@ -79,7 +79,7 @@ export default class Data {
             return something;
 
         } else if( response.status === 401 ){
-            console.log(response.json());
+            // console.log(response.json());
             return null;
         } else{
             throw new Error();
@@ -165,7 +165,7 @@ export default class Data {
             return something;
 
         } else if( response.status === 401 ){
-            console.log(response.json());
+            // console.log(response.json());
             return null;
         } else{
             throw new Error();

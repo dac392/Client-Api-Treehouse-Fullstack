@@ -37,7 +37,7 @@ export const Provider = (props)=>{
             setPassword(password);
 
             Cookies.set('authUser', JSON.stringify(user), { sameSite: "strict", expires: 1 });
-            Cookies.set('password', password, { sameSite: "strict", expires: 1 });
+            Cookies.set('password', JSON.stringify({password}), { sameSite: "strict", expires: 1 });
         }
         return { user, errors: null };
     }
@@ -77,7 +77,7 @@ export const Provider = (props)=>{
         }
         user.password = password;
         const response = await data.createCourse({title, description, estimatedTime, materialsNeeded}, user);
-        console.log(response);
+        // console.log(response);
         return response;
     }
 
@@ -87,7 +87,7 @@ export const Provider = (props)=>{
     }
 
     const deleteCourse = async (id)=>{
-        console.log(id);
+        // console.log(id);
         const user = { username: authUser.emailAddress, password}
         const response = await data.deleteCourse(id, user);
         return (response.length===0)? 204:null;
