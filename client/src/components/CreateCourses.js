@@ -73,11 +73,12 @@ const CreateCourses = ({ isUpdate, details, id })=>{
                 if (status === 201){
                     setFlag(SUCCESS);
                 }else{
+                    // console.log(errors);
                     setErrors(errors);
                 }
             })
             .catch( err=>{
-                console.log(err);
+                // console.log(err);
                 setFlag(FAILURE);
             } );
         }

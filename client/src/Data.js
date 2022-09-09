@@ -110,11 +110,15 @@ export default class Data {
      * @returns {status, errors}
      */
     async createCourse(obj, user){
-        const response = await this.api('/courses', 'POST', obj, true, {username: user.emailAddress, password: user.password});
+        // console.log(user);
+        const response = await this.api('/courses', 'POST', obj, true, user);
         if(response.status === 201){
             return {status: response.status, errors:null};
         } else if( response.status >= 400 ){
-            const errors = await response.json().then(data => data.errors);
+            let errors = await response.json().then(data => data.errors);
+            if(errors === null){
+                errors = ['Something went wrong'];
+            }
             return { status: response.status, errors };
         } else{
             throw new Error("something happened");

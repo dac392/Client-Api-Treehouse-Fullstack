@@ -13,7 +13,7 @@ export const Provider = (props)=>{
     const data = new Data();
     const cookie_data_user = Cookies.get('authUser');
     const cookie_data_password = Cookies.get('password');
-    const user_cookie = cookie_data_user? JSON.parse( cookie_data_user ) : null;
+    const user_cookie = cookie_data_user? JSON.parse( cookie_data_user ).password : null;
     const password_cookie = cookie_data_password? JSON.parse( cookie_data_password ) : null
 
     const [allUsers, setAllUsers] = useState([]);
@@ -46,6 +46,7 @@ export const Provider = (props)=>{
         setAuthUser(null);
         setPassword(null);
         Cookies.remove('authUser');
+        Cookies.remove('password');
       };
 
     const signUp = async (user)=>{
@@ -75,8 +76,18 @@ export const Provider = (props)=>{
         if (materialsNeeded.length === 0){
             materialsNeeded = null;
         }
-        user.password = password;
-        const response = await data.createCourse({title, description, estimatedTime, materialsNeeded}, user);
+
+        const course = {
+            title,
+            description,
+            estimatedTime,
+            materialsNeeded
+        }
+        const authInfo = {
+            username: user.emailAddress,
+            password
+        }
+        const response = await data.createCourse(course, authInfo);
         // console.log(response);
         return response;
     }
